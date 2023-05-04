@@ -4,9 +4,17 @@ import {UserDataInput} from "../types/UserDataInput";
 import {UpdateUserData} from "../types/UpdateUserData";
 
 export const getUser = async (req: Request, res: Response) => {
-    const userId = parseInt(req.params.id);
+    const userId= parseInt(req.params.id);
     const userModel = new UserModel();
     const user = await userModel.getUser(userId);
+    res.send(user);
+
+}
+
+export const getUserByUsername = async (req: Request, res: Response) => {
+    const userName= req.params.username;
+    const userModel = new UserModel();
+    const user = await userModel.getUserByUsername(userName);
     res.send(user);
 
 }

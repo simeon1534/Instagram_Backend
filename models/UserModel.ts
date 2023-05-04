@@ -18,6 +18,10 @@ export class UserModel {
         const [rows] =  await this.conn.query("SELECT * FROM users WHERE user_id = ?", [user_id])
         return rows;
     }
+    async getUserByUsername(username: string){
+        const [rows] =  await this.conn.query("SELECT * FROM users WHERE username LIKE ?", [username])
+        return rows;
+    }
 
     async createUser(userDataInput: UserDataInput){
         const insertDataObject = [
